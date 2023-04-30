@@ -1,0 +1,642 @@
+/*********** BASICS ***********/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial';
+    color: white;
+}
+
+:root {
+    --main-bg-color: #22252C;
+    --primary-color: #d8ca00;
+    --secondary-color: #dd8500;
+    --main-screen-bg-color: rgba(0,0,0,0.5);
+    --canvas-bg-color: rgb(43, 255, 0);
+    --hover-color: #d37f00;
+    --hover-bg-color:rgb(233, 233, 233);
+    --focused-color: #a86500;
+    --focused-bg-color: rgb(255, 255, 255);
+    --gallry-container-bg-color: rgb(105, 105, 105);
+    --serachbar-bg-color: rgb(182, 182, 182);
+    --keywords-bar-bg-color: rgb(204, 204, 204);
+    --control-panel-bg-color: #d37f00;
+    --text-bar-bg-color:rgb(226, 226, 226);
+    --btn-bg-color: rgb(177, 177, 177);
+    --share-fb-bg-color: #4267B2;
+    --delete-btn-bg-color: rgb(209, 112, 0);
+}
+
+body {
+    background-color: var(--main-bg-color);
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    border: none;
+}
+
+button:hover, .btn-control:hover {
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+button:active, .btn-control:active {
+    transform: scale(0.85);
+}
+
+/*********** HELPERS ***********/
+
+.main-layout {
+    max-width: 1260px;
+    margin: auto;
+}
+
+.clean-list {
+    list-style-type: none;
+}
+
+.display-none {
+    display: none;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+}
+
+/* FLEX */
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-even {
+    justify-content: space-evenly;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: start;
+}
+
+/*********** MAIN CONTAINER ***********/
+
+.main-container {
+    margin-top: 20px;
+    border-radius: 40px;
+}
+
+/* SCREEN */
+
+.main-screen {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main-bg-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.main-screen.menu-open {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/****** HEADER ******/
+
+.main-header {
+    height: 75px;
+    padding: 5px 5%;
+    border-radius: 40px;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.nav-link {
+    text-decoration: none;
+    height: 40px;
+    width: 120px;
+    border-radius: 20px;
+    font-size: 1.375rem;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: var(--hover-color);
+    background-color: var(--hover-bg-color);
+}
+
+.nav-link.focused {
+    color: var(--focused-color);
+    background-color: var(--focused-bg-color);
+}
+
+.hamburger {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    display: none;
+}
+
+.hamburger .fa-bars {
+    color: var(--secondary-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/************ MAIN CONTENT ************/
+
+.main-content {
+    margin-top: 20px;
+}
+
+/*** GALLERY SECTION ***/
+
+.gallery-container {
+    padding: 20px 10px;
+    background-color: var(--gallry-container-bg-color);
+    border-radius: 10px;
+}
+
+.search-nav {
+    gap: 20px;
+}
+
+.search-bar, .keywords-bar {
+    height: 60px;
+    /* width: 540px; */
+    border-radius: 15px;
+}
+
+.search-bar {
+    position: relative;
+    background-color: var(--serachbar-bg-color);
+}
+
+.fa-search {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+.search-input {
+    height: 100%;
+    width: 80%;
+    display: block;
+    margin: auto;
+    font-size: 1.5rem;
+    background-color: inherit;
+}
+
+.keywords-bar {
+    background-color: var(--keywords-bar-bg-color);
+}
+
+.keywords-container {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.keyword:hover {
+    cursor: pointer;
+    background-color: var(--hover-bg-color);
+    color: var(--hover-color);
+    border-radius: 20px;
+    transition: .3s;
+}
+
+.btn-more-keywords {
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    height: 40px;
+    width: 100px;
+    font-size: 1.5rem;
+    border-radius: 50px;
+}
+
+.gallery {
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.meme-img {
+    width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 2px #444444;
+    transition: transform .3s;
+}
+
+.meme-img:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 3px white;
+    transform: scale(1.05);
+    transition: transform .3s;
+}
+
+/*** MEME EDITOR SECTION ***/
+/* CANVAS */
+
+.canvas-container {
+    width: 480px;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    border-radius: 10px;
+    background-color: var(--canvas-bg-color);
+    cursor: grab;
+}
+
+/* CONTROL PANEL */
+
+.control-panel {
+    width: 500px;
+    padding: 20px;
+    gap: 15px;
+    border-radius: 10px;
+    background-color: var(--control-panel-bg-color);
+}
+
+.text-bar {
+    height: 50px;
+    width: 450px;
+    border-radius: 30px;
+    background-color: var(--text-bar-bg-color);
+}
+
+.text-line-input {
+    background-color: inherit;
+    height: 100%;
+    width: 90%;
+    border-radius: 30px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.btn-control {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+}
+
+.btn-switch-line {
+    background-color: var(--btn-bg-color);
+}
+
+.btn-add-line {
+    background-color: var(--btn-bg-color);
+}
+
+.btn-remove-line {
+    background-color: var(--btn-bg-color);
+}
+
+.control-panel-fonts {
+    width: 450px;
+    padding: 20px;
+    border-radius: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    background-color: var(--btn-bg-color);
+}
+
+.control-panel-fonts>*, .select-font-family>* {
+    color: black;
+}
+
+.select-font-family>* {
+    color: black;
+}
+
+
+.select-font-family {
+    grid-column: 1/4;
+    border-radius: 15px;
+    font-size: 1rem;
+}
+
+.select-sticker {
+    grid-column: 1/6;
+    border-radius: 15px;
+    font-size: 2.5rem;
+}
+
+.btn-font-stroke, .btn-font-fill {
+    position: relative;
+}
+
+.fas {
+    color: inherit
+}
+
+input[type="color"] {
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fa-palette, .fa-fill {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.control-sharing {
+    width: 450px;
+}
+
+.btn-share, .btn-download, .btn-save {
+    width: 145px;
+    position: relative;
+}
+
+.btn-share {
+    background-color: var(--share-fb-bg-color);
+}
+
+.fa-facebook, .fa-download, .fa-save {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fa-facebook {
+    left: 15%;
+}
+
+.btn-share span, .btn-download span, .btn-save span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-download {
+    background-color: var(--btn-bg-color);
+}
+
+.fa-download {
+    left: 10%;
+}
+
+.btn-save {
+    background-color: var(--btn-bg-color);
+}
+
+.fa-save {
+    left: 15%;
+}
+
+/*** SAVED MEMES SECTION ***/
+/* .meme-img {
+    display: block;
+} */
+
+.saved-meme {
+    position: relative;
+}
+
+.btn-delete-meme {
+    position: absolute;
+    border-radius: 10px;
+    padding: 10px 10px;
+    background-color: var(--delete-btn-bg-color);
+    bottom: 0;
+    right: 0;
+}
+
+/****** MEDIA QUERIES ******/
+
+/* TABLET */
+@media (max-width: 780px) {
+    .main-layout {
+        max-width: 750px;
+    }
+
+    .search-nav {
+        flex-direction: column;
+    }
+
+    .search-bar, .keywords-bar {
+        width: 700px;
+    }
+
+    .editor-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        overflow: hidden;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+    .main-container {
+        margin-top: 0;
+    }
+
+    .main-layout {
+        max-width: unset;
+    }
+
+    .main-header {
+        border-radius: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 200px;
+        background-color: #22252C;
+        z-index: 3;
+        transform: translateX(100%);
+
+        transition: transform .5s;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav.menu-open {
+        transform: translateX(0%);
+    }
+
+    .main-nav ul>* {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-link {
+        width: 100%;
+        border-radius: 0;
+        padding: 40px 0;
+        border-bottom: 2px solid white;
+    }
+
+    .gallery-container {
+        border-radius: 0;
+    }
+
+    .keywords-container {
+        flex-wrap: wrap;
+    }
+
+    .search-bar, .keywords-bar {
+        width: 90vw;
+    }
+
+    .meme-img {
+        width: 40vw;
+    }
+
+    .control-panel-fonts {
+        justify-items: center;
+        gap: 20px 10px;
+    }
+
+    .sticker {
+        font-size: 2rem;
+    }
+
+    .btn-share, .btn-download {
+        width: 150px;
+    }
+
+    .fa-download {
+        left: 5%;
+    }
+
+    .select-font-family {
+        grid-column: 1/4;
+        border-radius: 15px;
+        font-size: 1rem;
+    }
+    
+    .select-sticker {
+        grid-column: 1/6;
+        border-radius: 15px;
+        font-size: 2.5rem;
+    }
+}
+
+/* @media (max-width: 450px) {
+    .main-layout {
+        margin-top: 0;
+    }
+
+    .search-nav {
+        margin: 30px 0 40px;
+    }
+
+    .editor-container {
+        gap: 0;
+    }
+
+    .canvas-container, .control-panel {
+        width: 100vw;
+    }
+
+    canvas, .control-panel {
+        border-radius: 0;
+    }
+
+    .meme-img {
+        width: 80vw;
+    }
+
+    .control-panel-fonts {
+        font-size: 1.1rem;
+    }
+
+    .text-bar, .control-panel-fonts, .control-stickers, .control-sharing {
+        width: 100%;
+    }
+
+    .control-sharing {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btn-share, .btn-download, .btn-save {
+        width: 100%;
+    }
+
+    .fa-share-alt {
+        left: 36%;
+    }
+
+    .fab {
+        right: 36%;
+    }
+
+    .fa-download {
+        left: 32%;
+    }
+
+    .fa-save {
+        left: 38%;
+    }
+} */

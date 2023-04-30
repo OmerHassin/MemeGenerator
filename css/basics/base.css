@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Arial', sans-serif; */
+    color: white;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #22252C;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    border: none;
+}
