@@ -196,18 +196,21 @@ function getEvPos(ev) {
         offsetX: ev.offsetX,
         offsetY: ev.offsetY
     }
-    // console.log('pos:', pos)
+    console.log('pos:', pos)
     // Check if its a touch ev
     if (TOUCH_EVS.includes(ev.type)) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
          //Calc the right pos according to the touch screen
-        // console.log('ev.pageX:', ev.pageX)
-        // console.log('ev.pageY:', ev.pageY)
+        console.log('ev.pageX:', ev.pageX)
+        console.log('ev.pageY:', ev.pageY)
+        const boundingClientRect = ev.target.getBoundingClientRect();
         pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+            offsetX: ev.pageX - boundingClientRect.left,
+            offsetY: ev.pageY - boundingClientRect.top
         }
+        console.log(ev.pageX - boundingClientRect.left);
+        console.log(ev.pageY - boundingClientRect.top);
     }
     
     return pos
